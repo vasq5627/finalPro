@@ -170,7 +170,7 @@ function displayPlatform(){
             <input type="text" placeholder="Title"class="form-control" name="gameName" /><br /><br />
             <br />
            <h3>Genre:</h3> <br />
-                <select name="piece" class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="genre">
+                <select  class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="genre">
                     <option value=""> Select One </option>
                <?=displayGenre()?>
                 </select>
