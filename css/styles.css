@@ -1,0 +1,54 @@
+body{
+     color:black;
+    background-color:black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20px;
+    background-image:url(../img/Shapes.jpg);
+    text-align:center;
+    
+}
+ 
+/*input[type=text]{
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 18px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 2px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 40%;
+}
+ */
+
+
+ #act, #border {
+    width: 900px;
+    background-color:#a6a6a6;
+    opacity: .95;
+    color: black;
+    text-align: center;
+    height:150;
+    padding:30px; 
+    border-radius: 30px;
+    margin: auto;
+    top: 100px;
+    border-style: solid;
+    
+}
+
+
+select {
+    width: 50%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+}
