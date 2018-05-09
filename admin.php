@@ -3,6 +3,11 @@
 session_start();
 include 'inc/header.php';
 include 'dbConnection.php';
+if(!isset( $_SESSION['adminName']))
+{
+  header("Location:index.php");
+}
+
 $conn = getDatabaseConnection("theVideoGameStore");
 
 function displayAllProducts(){
@@ -91,11 +96,18 @@ function generateCount(){
         </form>
         <br >
         <br >
-        <button type="button" class="btn btn-dark game">Sum of Prices</button>
+        <button type="submit"  id="sumbtn" class="btn btn-dark game">Sum of Prices</button>
+         <span id='sump'></span>
         <br>  <br>
-        <button type="button" class="btn btn-info">Average of Prices</button>
+        <button type="submit"  id="averagebtn" class="btn btn-info">Average of Prices</button>
+         <span id='avgb'></span>
         <br> <br> 
-        <button type="button" class="btn btn-dark">Count of Games</button>
+        <button type="submit"  id="countbtn" class="btn btn-dark">Count of Games</button>
+        <span id='couc'></span>
+        
+    
+        
+        
         <br> <br>
         <br /> <br />
        
@@ -124,42 +136,58 @@ function generateCount(){
     $(document).ready(function(){
     
             
-            $(".gameLink ").click(function(){
-                
-            
-                
-                $('#gameModal').modal("show");
-               
-                
-                $.ajax({
-
-                    type: "GET",
-                    url: "getGameInfo.php",
-                    dataType: "json",
-                    data: { "gameId": $(this).attr("gameId")},
+           $("#averagebtn").click( function(){
+                    $.ajax({
+                    type:"GET",
+                    url: "fun/average.php",
+                    dataType: "JSON",
+                    data:{}, 
                     success: function(data,status) {
-                       $("#gameModalLabel").html("<h2>" + data.gameTitle +"</h2>");
-                       $("#gameInfo").html("");
-                       $("#gameInfo").append("Description:" + data.gameDescription + "<br><br>");
-                        $("#gameInfo").append("Price:" + data.gamePrice + "<br><br>");
-                        $("#gameInfo").append("Platform:" + data.Platform + "<br><br>");
-                         $("#gameInfo").append("Genre:" +data.Genre + "<br> <br>");
-                        $("#gameInfo").append("<img src='" + data.gameImage + "' width='150'");
-                       
-                       
-                    
+                        
+                        $("#avgb").html("Averge prices: " + data.p );
                     },
-                    complete: function(data,status) { //optional, used for debugging purposes
-                    
+                    complete: function(data,status) { 
                     }
                     
-                });//ajax
+                    });
+                });
+           
+               $("#sumbtn").click( function(){
+                    $.ajax({
+                    type:"GET",
+                    url: "fun/sum.php",
+                    dataType: "JSON",
+                     data:{}, 
+                    success: function(data,status) {
+                        
+                        $("#sump").html("Sum of the prices: " + data.s );
+                    },
+                    complete: function(data,status) { 
+                    }
+                    
+                    });
+                });
                 
+             $("#countbtn").click( function(){
+                    $.ajax({
+                    type:"GET",
+                    url: "fun/count.php",
+                    dataType: "JSON",
+                     data:{}, 
+                    success: function(data) {
+                        
+                        $("#couc").html("Count of items:" + data.c );
+                    },
+                    complete: function(data,status) { 
+                    }
+                    
+                    });
+                });
+              
                 
-            });
         
         
-    }); //document ready
+    }); 
     
         </script>
         <div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

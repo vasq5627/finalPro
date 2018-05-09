@@ -62,7 +62,7 @@ function displayPlatform(){
                   
              if (!empty($_GET['genre'])) { //checks whether user has typed something in the "Product" text box
                  $sql .=  " AND Genre = :genre";
-                 $namedParameters[":Genre"] =  $_GET['genre'];
+                 $namedParameters[":genre"] =  $_GET['genre'];
              }
              
              if (!empty($_GET['platform'])) { //checks whether user has typed something in the "Product" text box
@@ -117,7 +117,6 @@ function displayPlatform(){
                 echo "<td><h4>$gamePlatform</h4></td>";
                 echo "<td><h4>$gamePrice</h4></td>";
                  
-                echo "<td><a href='#' class='gameLink'> More Info! </a> </td>";
                 echo "</tr>";
             }
             echo "</table>";
